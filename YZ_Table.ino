@@ -8,7 +8,7 @@ int motorCurrent[4] = {0};
 // CAN_message_t msg;
 
 void setMotorRpm(int id ,int targetRpm){
-  int p = 25;//set GAIN
+  int p = 20;//set GAIN
   motorCurrent[id] = p*(targetRpm-motor.wEscData[id].rotation);
   motorCurrent[id] = constrain(motorCurrent[id],-10000,10000);
 }
@@ -30,7 +30,7 @@ void timerInt(){
   motor.getCanData();
   // setMotorRpm(0,600);
   setMotorPos(0,20000);
-  motor.driveWheel(motorCurrent);
+  // motor.driveWheel(motorCurrent);
   Serial.println(motor.exEscData[0].pos);
   // Serial.print(", ");
   // Serial.println(motorCurrent[0]);
@@ -52,7 +52,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   digitalWrite(13,LOW);
-  delay(50);
+  delay(500);
   digitalWrite(13,HIGH);
-  delay(50);
+  delay(500);
 }
