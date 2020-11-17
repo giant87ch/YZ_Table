@@ -14,7 +14,7 @@ void setMotorRpm(int id ,int targetRpm){
 }
 
 void setMotorPos(int id ,int targetPos){
-  int p = 2;//set GAIN
+  int p = 1;//set GAIN
   int rpm = 0;
   rpm = p*(targetPos-motor.exEscData[id].pos);
   setMotorRpm(id,rpm);
@@ -30,7 +30,7 @@ void timerInt(){
   motor.getCanData();
   // setMotorRpm(0,600);
   setMotorPos(0,20000);
-  // motor.driveWheel(motorCurrent);
+  motor.driveWheel(motorCurrent);
   Serial.println(motor.exEscData[0].pos);
   // Serial.print(", ");
   // Serial.println(motorCurrent[0]);
